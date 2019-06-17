@@ -6,13 +6,15 @@ package parkinglot.model;
  */
 public class Ticket {
     private boolean isValid;
+    private ParkingLot parkingLot;
 
-    private Ticket(boolean isValid) {
+    private Ticket(ParkingLot parkingLot, boolean isValid) {
+        this.parkingLot = parkingLot;
         this.isValid = isValid;
     }
 
-    public static Ticket getNewTicket() {
-        return new Ticket(true);
+    public static Ticket getNewTicket(ParkingLot parkingLot) {
+        return new Ticket(parkingLot, true);
     }
 
     public static void destroyTicket(Ticket ticket) {
@@ -23,8 +25,8 @@ public class Ticket {
         return isValid;
     }
 
-    private void setValid(boolean valid) {
-        isValid = valid;
+    public ParkingLot getParkingLot() {
+        return parkingLot;
     }
 
     @Override
@@ -42,5 +44,9 @@ public class Ticket {
     @Override
     public int hashCode() {
         return super.hashCode();
+    }
+
+    private void setValid(boolean valid) {
+        isValid = valid;
     }
 }

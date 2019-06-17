@@ -10,6 +10,6 @@ import parkinglot.model.Ticket;
  * @author yancy3@lenovo.com
  * created on 2019-06-17
  */
-public interface ParkingCar {
+public interface ParkingCarAction {
     Ticket park(Car car, ParkingLot parkingLot) throws NoCarToParkException, FullyOccupiedParkingLotException;
 }
