@@ -32,7 +32,7 @@ public class ParkingLotUtil {
                                              .mapToObj(ParkingLot::getEmptyParkingLot)
                                              .collect(Collectors.toList());
 
-        parkingLots.stream().limit(capacity.length << 1).forEach(parkingLot -> parkingLot.getOccupiedAmount().set(parkingLot.getCapacity()));
+        parkingLots.stream().limit(capacity.length / 2).forEach(parkingLot -> parkingLot.getOccupiedAmount().set(parkingLot.getCapacity()));
         return parkingLots;
     }
 }
