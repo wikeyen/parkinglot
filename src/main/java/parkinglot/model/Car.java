@@ -1,4 +1,4 @@
-package domain;
+package parkinglot.model;
 
 /**
  * @author yancy3@lenovo.com

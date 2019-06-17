@@ -30,6 +30,11 @@ With one car and one parking-lot, how do you park your car?
 >when "picking up a car"<br>
 >then "picking up failed"
 
+###2019/06/17
+####Description
+A newbie car parking attendant, multiple parking-lots. When a parking-lot is full, then it is allowed to the next one (the parking lots are in a sequence) 
+
+####Tasking
 
 
 

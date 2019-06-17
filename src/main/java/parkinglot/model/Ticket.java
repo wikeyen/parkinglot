@@ -1,21 +1,21 @@
-package domain;
+package parkinglot.model;
 
 /**
- * @author yancy3@lenovo.com
+ * @author chongyang18@gmail.com
  * created on 2019-06-16
  */
-public class Tickets {
+public class Ticket {
     private boolean isValid;
 
-    private Tickets(boolean isValid) {
+    private Ticket(boolean isValid) {
         this.isValid = isValid;
     }
 
-    public static Tickets getTicket() {
-        return new Tickets(true);
+    public static Ticket getNewTicket() {
+        return new Ticket(true);
     }
 
-    public static void destroyTicket(Tickets ticket) {
+    public static void destroyTicket(Ticket ticket) {
         ticket.setValid(false);
     }
 
@@ -35,7 +35,7 @@ public class Tickets {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Tickets ticket = (Tickets) o;
+        Ticket ticket = (Ticket) o;
         return isValid == ticket.isValid;
     }
 

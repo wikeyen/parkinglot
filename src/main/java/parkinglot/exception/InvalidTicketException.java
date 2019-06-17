@@ -1,4 +1,4 @@
-package exception;
+package parkinglot.exception;
 
 /**
  * @author yancy3@lenovo.com
