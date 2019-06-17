@@ -35,34 +35,34 @@ With one car and one parking-lot, how do you park your car?
 A newbie car parking attendant, multiple parking-lots. When a parking-lot is full, then should go to the next one to park (the parking lots are in a sequence) 
 
 ####Tasking
-given one car, two not fully occupied parking-lot
-when parking
-then parking into the first parking-lot, and get a ticket from it
-
-given one car, two parking-lots with the first one fully occupied and the second one with some vacancies
-when parking
-then parking into the second parking-lot, and get a ticket from it
-
-given one car, two fully occupied parking-lot
-when parking
-then parking failed
-
-given one car, no parking-lot
-when parking
-then parking failed
-
-given no car
-when parking
-then parking failed
-
-given a certain parking-lot with a parked car, and a valid ticket relate to it
-when picking up the car from the correct parking-lot
-then picking up car success, the ticket should turn to invalid
-
-given a certain parking-lot with a parked car, and a valid ticket relate to it
-when picking up the car from a wrong parking-lot
-then picking up car failed, the ticket should still be valid
-
-given an invalid ticket
-when picking up a car
-then picking up failed
+>given one car, two not fully occupied parking-lot<br>
+>when parking<br>
+>then parking into the first parking-lot, and get a ticket from it<br>
+>
+>given one car, two parking-lots with the first one fully occupied and the second one with some vacancies<br>
+>when parking<br>
+>then parking into the second parking-lot, and get a ticket from it<br>
+>
+>given one car, two fully occupied parking-lot<br>
+>when parking<br>
+>then parking failed<br>
+>
+>given one car, no parking-lot<br>
+>when parking<br>
+>then parking failed<br>
+>
+>given no car<br>
+>when parking<br>
+>then parking failed<br>
+>
+>given a certain parking-lot with a parked car, and a valid ticket relate to it<br>
+>when picking up the car from the correct parking-lot<br>
+>then picking up car success, the ticket should turn to invalid<br>
+>
+>given a certain parking-lot with a parked car, and a valid ticket relate to it<br>
+>when picking up the car from a wrong parking-lot<br>
+>then picking up car failed, the ticket should still be valid<br>
+>
+>given an invalid ticket<br>
+>when picking up a car<br>
+>then picking up failed<br>
