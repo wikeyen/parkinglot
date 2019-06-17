@@ -2,7 +2,8 @@ package parkingattendant.model;
 
 import parkingattendant.impl.ParkingAttendantParkingActionImpl;
 import parkingattendant.impl.ParkingAttendantPickingUpActionImpl;
-import parkinglot.exception.*;
+import parkinglot.exception.NoCarToParkException;
+import parkinglot.exception.NoParkingLotException;
 import parkinglot.model.Car;
 import parkinglot.model.ParkingLot;
 import parkinglot.model.Ticket;
@@ -22,7 +23,7 @@ public class ParkingAttendantJunior extends ParkingAttendant {
     }
 
     @Override
-    public Ticket park(Car car) throws NoCarToParkException, FullyOccupiedParkingLotException, NoParkingLotException {
+    public Ticket park(Car car) throws Exception {
         if (car == null) {
             throw new NoCarToParkException("You must have a car before parking");
         }
@@ -33,7 +34,7 @@ public class ParkingAttendantJunior extends ParkingAttendant {
     }
 
     @Override
-    public Car pickingUpCar(Ticket ticket, ParkingLot parkingLot) throws InvalidTicketException, CarPickingUpWithoutTicketException, TicketAndParkingLotNotMatch {
+    public Car pickingUpCar(Ticket ticket, ParkingLot parkingLot) throws Exception {
         return pickingUpAction.pickUpCar(ticket, parkingLot);
     }
 }

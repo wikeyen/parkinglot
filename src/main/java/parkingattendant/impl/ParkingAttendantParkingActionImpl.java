@@ -1,10 +1,9 @@
 package parkingattendant.impl;
 
 import parkingattendant.ParkingAttendantParkingAction;
-import parkinglot.ParkingCarAction;
+import parkinglot.ParkingLotFacade;
 import parkinglot.exception.FullyOccupiedParkingLotException;
-import parkinglot.exception.NoCarToParkException;
-import parkinglot.impl.ParkingCarActionImpl;
+import parkinglot.impl.ParkingLotFacadeImpl;
 import parkinglot.model.Car;
 import parkinglot.model.ParkingLot;
 import parkinglot.model.Ticket;
@@ -16,19 +15,19 @@ import java.util.List;
  * created on 2019-06-17
  */
 public class ParkingAttendantParkingActionImpl implements ParkingAttendantParkingAction {
-    private ParkingCarAction parkingCarAction;
+    private ParkingLotFacade parkingLotFacade;
 
     public ParkingAttendantParkingActionImpl() {
-        this.parkingCarAction = new ParkingCarActionImpl();
+        this.parkingLotFacade = new ParkingLotFacadeImpl();
     }
 
     @Override
-    public Ticket park(Car car, List<ParkingLot> parkingLots) throws FullyOccupiedParkingLotException, NoCarToParkException {
+    public Ticket park(Car car, List<ParkingLot> parkingLots) throws Exception {
         ParkingLot parkingLot = parkingLots.stream()
                                            .filter(parkinglot -> !parkinglot.isFull())
                                            .findFirst()
                                            .orElseThrow(() -> new FullyOccupiedParkingLotException("All parking-lots are full"));
 
-        return parkingCarAction.park(car, parkingLot);
+        return parkingLotFacade.park(car, parkingLot);
     }
 }

@@ -1,15 +1,16 @@
-package parkinglot;
+package parkinglot.functional;
 
+import com.sun.tools.javac.util.Pair;
 import parkinglot.exception.FullyOccupiedParkingLotException;
 import parkinglot.exception.NoCarToParkException;
 import parkinglot.model.Car;
 import parkinglot.model.ParkingLot;
-import parkinglot.model.Ticket;
 
 /**
  * @author yancy3@lenovo.com
  * created on 2019-06-17
  */
-public interface ParkingCarAction {
-    Ticket park(Car car, ParkingLot parkingLot) throws NoCarToParkException, FullyOccupiedParkingLotException;
+@FunctionalInterface
+public interface ParkingCar {
+    Pair park(Car car, ParkingLot parkingLot) throws NoCarToParkException, FullyOccupiedParkingLotException;
 }

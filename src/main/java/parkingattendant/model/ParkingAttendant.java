@@ -2,7 +2,6 @@ package parkingattendant.model;
 
 import parkingattendant.ParkingAttendantParkingAction;
 import parkingattendant.ParkingAttendantPickingUpAction;
-import parkinglot.exception.*;
 import parkinglot.model.Car;
 import parkinglot.model.ParkingLot;
 import parkinglot.model.Ticket;
@@ -23,8 +22,8 @@ public abstract class ParkingAttendant {
         this.parkingLots = parkingLots;
     }
 
-    public abstract Ticket park(Car car) throws NoCarToParkException, FullyOccupiedParkingLotException, NoParkingLotException;
+    public abstract Ticket park(Car car) throws Exception;
 
-    public abstract Car pickingUpCar(Ticket ticket, ParkingLot parkingLot) throws InvalidTicketException, CarPickingUpWithoutTicketException, TicketAndParkingLotNotMatch;
+    public abstract Car pickingUpCar(Ticket ticket, ParkingLot parkingLot) throws Exception;
 
 }

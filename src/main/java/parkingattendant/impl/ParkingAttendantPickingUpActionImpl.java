@@ -1,11 +1,8 @@
 package parkingattendant.impl;
 
 import parkingattendant.ParkingAttendantPickingUpAction;
-import parkinglot.PickingUpCarAction;
-import parkinglot.exception.CarPickingUpWithoutTicketException;
-import parkinglot.exception.InvalidTicketException;
-import parkinglot.exception.TicketAndParkingLotNotMatch;
-import parkinglot.impl.PickingUpCarActionImpl;
+import parkinglot.ParkingLotFacade;
+import parkinglot.impl.ParkingLotFacadeImpl;
 import parkinglot.model.Car;
 import parkinglot.model.ParkingLot;
 import parkinglot.model.Ticket;
@@ -15,14 +12,15 @@ import parkinglot.model.Ticket;
  * created on 2019-06-17
  */
 public class ParkingAttendantPickingUpActionImpl implements ParkingAttendantPickingUpAction {
-    private PickingUpCarAction pickingUpCarAction;
+    private ParkingLotFacade parkingLotFacade;
 
     public ParkingAttendantPickingUpActionImpl() {
-        this.pickingUpCarAction = new PickingUpCarActionImpl();
+        this.parkingLotFacade = new ParkingLotFacadeImpl();
     }
 
+
     @Override
-    public Car pickUpCar(Ticket ticket, ParkingLot parkingLot) throws CarPickingUpWithoutTicketException, InvalidTicketException, TicketAndParkingLotNotMatch {
-        return pickingUpCarAction.pickUpCar(ticket, parkingLot);
+    public Car pickUpCar(Ticket ticket, ParkingLot parkingLot) throws Exception {
+        return parkingLotFacade.pickUp(ticket, parkingLot);
     }
 }
