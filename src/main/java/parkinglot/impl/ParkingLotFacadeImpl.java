@@ -2,6 +2,7 @@ package parkinglot.impl;
 
 import com.sun.tools.javac.util.Pair;
 import parkinglot.ParkingLotFacade;
+import parkinglot.functional.ParkingLotFunctionality;
 import parkinglot.model.Car;
 import parkinglot.model.ParkingLot;
 import parkinglot.model.Ticket;

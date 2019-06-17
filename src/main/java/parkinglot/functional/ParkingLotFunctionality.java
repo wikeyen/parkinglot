@@ -1,4 +1,4 @@
-package parkinglot.impl;
+package parkinglot.functional;
 
 import com.sun.tools.javac.util.Pair;
 import parkinglot.exception.*;
