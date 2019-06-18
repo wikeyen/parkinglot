@@ -22,7 +22,7 @@ public class ParkingAttendantParkingActionImpl implements ParkingAttendantParkin
     }
 
     @Override
-    public Ticket park(Car car, List<ParkingLot> parkingLots) throws Exception {
+    public Ticket park(Car car, List<ParkingLot> parkingLots) throws Throwable {
         ParkingLot parkingLot = parkingLots.stream()
                                            .filter(parkinglot -> !parkinglot.isFull())
                                            .findFirst()

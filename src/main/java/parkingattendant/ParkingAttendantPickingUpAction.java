@@ -9,5 +9,5 @@ import parkinglot.model.Ticket;
  * created on 2019-06-17
  */
 public interface ParkingAttendantPickingUpAction {
-    Car pickUpCar(Ticket ticket, ParkingLot parkingLot) throws Exception;
+    Car pickUpCar(Ticket ticket, ParkingLot parkingLot) throws Throwable;
 }

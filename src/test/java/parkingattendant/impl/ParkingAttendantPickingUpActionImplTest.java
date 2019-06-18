@@ -22,7 +22,7 @@ import static util.ParkingLotUtil.getFirstHalfFullParkingLots;
  */
 class ParkingAttendantPickingUpActionImplTest {
     @Test
-    void should_get_the_car_and_set_ticket_invalid_when_picking_up_from_the_correct_parking_lot_given_a_certain_parking_lot_with_a_parked_car_and_a_related_valid_ticket() throws Exception {
+    void should_get_the_car_and_set_ticket_invalid_when_picking_up_from_the_correct_parking_lot_given_a_certain_parking_lot_with_a_parked_car_and_a_related_valid_ticket() throws Throwable {
         List<ParkingLot> parkingLots = getFirstHalfFullParkingLots(2, 2, 2, 2);
         Car carToPark = new Car();
         ParkingAttendant attendant = new ParkingAttendantJunior(parkingLots);
@@ -38,7 +38,7 @@ class ParkingAttendantPickingUpActionImplTest {
     }
 
     @Test
-    void should_not_get_the_car_and_keep_ticket_valid_when_picking_up_from_the_wrong_parking_lot_given_a_certain_parking_lot_with_a_parked_car_and_a_related_valid_ticket() throws Exception {
+    void should_not_get_the_car_and_keep_ticket_valid_when_picking_up_from_the_wrong_parking_lot_given_a_certain_parking_lot_with_a_parked_car_and_a_related_valid_ticket() throws Throwable {
         List<ParkingLot> parkingLots = getFirstHalfFullParkingLots(2, 2, 2, 2);
         Car carToPark = new Car();
         ParkingAttendant attendant = new ParkingAttendantJunior(parkingLots);
@@ -50,7 +50,7 @@ class ParkingAttendantPickingUpActionImplTest {
     }
 
     @Test
-    void should_not_to_get_a_car_when_picking_up_given_an_invalid_ticket() throws Exception {
+    void should_not_to_get_a_car_when_picking_up_given_an_invalid_ticket() throws Throwable {
         List<ParkingLot> parkingLots = getEmptyParkingLots(2, 2);
         Car carToPark = new Car();
         ParkingAttendant attendant = new ParkingAttendantJunior(parkingLots);

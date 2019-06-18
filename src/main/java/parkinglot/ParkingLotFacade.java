@@ -1,9 +1,9 @@
 package parkinglot;
 
-import com.sun.tools.javac.util.Pair;
 import parkinglot.model.Car;
 import parkinglot.model.ParkingLot;
 import parkinglot.model.Ticket;
+import parkinglot.util.Either;
 
 import java.util.function.BiFunction;
 
@@ -13,11 +13,11 @@ import java.util.function.BiFunction;
  */
 public interface ParkingLotFacade {
 
-    Ticket park(Car car, ParkingLot parkingLot, BiFunction<Car, ParkingLot, Pair> biFunction) throws Exception;
+    Ticket park(Car car, ParkingLot parkingLot, BiFunction<Car, ParkingLot, Either> biFunction) throws Throwable;
 
-    Ticket park(Car car, ParkingLot parkingLot) throws Exception;
+    Ticket park(Car car, ParkingLot parkingLot) throws Throwable;
 
-    Car pickUp(Ticket ticket, ParkingLot parkingLot, BiFunction<Ticket, ParkingLot, Pair> biFunction) throws Exception;
+    Car pickUp(Ticket ticket, ParkingLot parkingLot, BiFunction<Ticket, ParkingLot, Either> biFunction) throws Throwable;
 
-    Car pickUp(Ticket ticket, ParkingLot parkingLot) throws Exception;
+    Car pickUp(Ticket ticket, ParkingLot parkingLot) throws Throwable;
 }

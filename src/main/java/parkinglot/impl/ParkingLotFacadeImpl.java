@@ -1,12 +1,12 @@
 package parkinglot.impl;
 
-import com.sun.tools.javac.util.Pair;
 import parkinglot.ParkingLotFacade;
 import parkinglot.functionality.ParkingFunction;
 import parkinglot.functionality.PickingUpFunction;
 import parkinglot.model.Car;
 import parkinglot.model.ParkingLot;
 import parkinglot.model.Ticket;
+import parkinglot.util.Either;
 
 import java.util.function.BiFunction;
 
@@ -25,42 +25,26 @@ public class ParkingLotFacadeImpl implements ParkingLotFacade {
     }
 
     @Override
-    public Ticket park(Car car, ParkingLot parkingLot, BiFunction<Car, ParkingLot, Pair> parkingFunctionality) throws Exception {
-        Pair parkingResult = parkingFunctionality.apply(car, parkingLot);
-        if (parkingResult.snd != null) {
-            return (Ticket) parkingResult.snd;
-        }
-
-        throw (Exception) parkingResult.fst;
+    public Ticket park(Car car, ParkingLot parkingLot, BiFunction<Car, ParkingLot, Either> parkingFunctionality) throws Throwable {
+        Either parkingResult = parkingFunctionality.apply(car, parkingLot);
+        return (Ticket) parkingResult.getRight().orElseThrow(parkingResult::getLeft);
     }
 
     @Override
-    public Ticket park(Car car, ParkingLot parkingLot) throws Exception {
-        Pair parkingResult = parkingFunction.parkCar().apply(car, parkingLot);
-        if (parkingResult.snd != null) {
-            return (Ticket) parkingResult.snd;
-        }
-
-        throw (Exception) parkingResult.fst;
+    public Ticket park(Car car, ParkingLot parkingLot) throws Throwable {
+        Either parkingResult = parkingFunction.parkCar().apply(car, parkingLot);
+        return (Ticket) parkingResult.getRight().orElseThrow(parkingResult::getLeft);
     }
 
     @Override
-    public Car pickUp(Ticket ticket, ParkingLot parkingLot, BiFunction<Ticket, ParkingLot, Pair> pickingUpFunctionality) throws Exception {
-        Pair pickingUpResult = pickingUpFunctionality.apply(ticket, parkingLot);
-        if (pickingUpResult.snd != null) {
-            return (Car) pickingUpResult.snd;
-        }
-
-        throw (Exception) pickingUpResult.fst;
+    public Car pickUp(Ticket ticket, ParkingLot parkingLot, BiFunction<Ticket, ParkingLot, Either> pickingUpFunctionality) throws Throwable {
+        Either pickingUpResult = pickingUpFunctionality.apply(ticket, parkingLot);
+        return (Car) pickingUpResult.getRight().orElseThrow(pickingUpResult::getLeft);
     }
 
     @Override
-    public Car pickUp(Ticket ticket, ParkingLot parkingLot) throws Exception {
-        Pair pickingUpResult = pickingUpFunction.pickUpCar().apply(ticket, parkingLot);
-        if (pickingUpResult.snd != null) {
-            return (Car) pickingUpResult.snd;
-        }
-
-        throw (Exception) pickingUpResult.fst;
+    public Car pickUp(Ticket ticket, ParkingLot parkingLot) throws Throwable {
+        Either pickingUpResult = pickingUpFunction.pickUpCar().apply(ticket, parkingLot);
+        return (Car) pickingUpResult.getRight().orElseThrow(pickingUpResult::getLeft);
     }
 }

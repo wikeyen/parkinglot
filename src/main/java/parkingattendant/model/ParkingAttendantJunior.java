@@ -23,7 +23,7 @@ public class ParkingAttendantJunior extends ParkingAttendant {
     }
 
     @Override
-    public Ticket park(Car car) throws Exception {
+    public Ticket park(Car car) throws Throwable {
         if (car == null) {
             throw new NoCarToParkException("You must have a car before parking");
         }
@@ -34,7 +34,7 @@ public class ParkingAttendantJunior extends ParkingAttendant {
     }
 
     @Override
-    public Car pickingUpCar(Ticket ticket, ParkingLot parkingLot) throws Exception {
+    public Car pickingUpCar(Ticket ticket, ParkingLot parkingLot) throws Throwable {
         return pickingUpAction.pickUpCar(ticket, parkingLot);
     }
 }

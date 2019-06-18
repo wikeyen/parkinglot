@@ -19,7 +19,7 @@ import static util.ParkingLotUtil.getFullParkingLot;
  */
 class ParkingLotFacadeImplTest {
     @Test
-    void should_succeed_and_get_a_ticket_when_parking_given_a_car_and_a_not_full_parking_lot() throws Exception {
+    void should_succeed_and_get_a_ticket_when_parking_given_a_car_and_a_not_full_parking_lot() throws Throwable {
         ParkingLot parkingLot = getEmptyParkingLot(10);
         Car car = new Car();
         ParkingLotFacade parkingLotFacade = new ParkingLotFacadeImpl();
@@ -42,7 +42,7 @@ class ParkingLotFacadeImplTest {
     }
 
     @Test
-    void should_succeed_and_get_the_car_when_picking_up_given_a_parked_car_and_the_related_valid_ticket() throws Exception {
+    void should_succeed_and_get_the_car_when_picking_up_given_a_parked_car_and_the_related_valid_ticket() throws Throwable {
         ParkingLot parkingLot = getEmptyParkingLot(10);
         Car carToPark = new Car();
         ParkingLotFacade parkingLotFacade = new ParkingLotFacadeImpl();
@@ -55,7 +55,7 @@ class ParkingLotFacadeImplTest {
     }
 
     @Test
-    void should_fail_when_picking_up_given_a_parked_car_and_an_invalid_ticket() throws Exception {
+    void should_fail_when_picking_up_given_a_parked_car_and_an_invalid_ticket() throws Throwable {
         ParkingLot parkingLot = getEmptyParkingLot(10);
         Car carToPark = new Car();
         ParkingLotFacade parkingLotFacade = new ParkingLotFacadeImpl();
@@ -68,7 +68,7 @@ class ParkingLotFacadeImplTest {
     }
 
     @Test
-    void should_fail_when_picking_up_given_a_parked_car_and_an_used_ticket() throws Exception {
+    void should_fail_when_picking_up_given_a_parked_car_and_an_used_ticket() throws Throwable {
         ParkingLot parkingLot = getEmptyParkingLot(10);
         Car carToPark = new Car();
         ParkingLotFacade parkingLotFacade = new ParkingLotFacadeImpl();
@@ -81,7 +81,7 @@ class ParkingLotFacadeImplTest {
     }
 
     @Test
-    void should_fail_when_picking_up_given_any_parked_car_and_no_ticket() throws Exception {
+    void should_fail_when_picking_up_given_any_parked_car_and_no_ticket() throws Throwable {
         ParkingLot parkingLot = getEmptyParkingLot(10);
         Car carToPark = new Car();
         ParkingLotFacade parkingLotFacade = new ParkingLotFacadeImpl();

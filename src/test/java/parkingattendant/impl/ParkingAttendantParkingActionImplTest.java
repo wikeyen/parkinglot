@@ -22,7 +22,7 @@ import static util.ParkingLotUtil.*;
  */
 class ParkingAttendantParkingActionImplTest {
     @Test
-    void should_parking_into_the_first_parking_lot_and_get_a_ticket_when_parking_given_one_car_and_two_not_full_parking_lot() throws Exception {
+    void should_parking_into_the_first_parking_lot_and_get_a_ticket_when_parking_given_one_car_and_two_not_full_parking_lot() throws Throwable {
         List<ParkingLot> parkingLots = getEmptyParkingLots(2);
         Car carToPark = new Car();
         ParkingAttendant attendant = new ParkingAttendantJunior(parkingLots);
@@ -34,7 +34,7 @@ class ParkingAttendantParkingActionImplTest {
     }
 
     @Test
-    void should_parking_into_the_second_parking_lot_and_get_a_ticket_when_parking_given_one_car_and_two_parking_lots_with_the_first_one_fully_occupied() throws Exception {
+    void should_parking_into_the_second_parking_lot_and_get_a_ticket_when_parking_given_one_car_and_two_parking_lots_with_the_first_one_fully_occupied() throws Throwable {
         List<ParkingLot> oneFullOneEmptyParkingLots = getFirstHalfFullParkingLots(2, 2);
         Car carToPark = new Car();
         ParkingAttendant attendant = new ParkingAttendantJunior(oneFullOneEmptyParkingLots);

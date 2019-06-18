@@ -22,8 +22,8 @@ public abstract class ParkingAttendant {
         this.parkingLots = parkingLots;
     }
 
-    public abstract Ticket park(Car car) throws Exception;
+    public abstract Ticket park(Car car) throws Throwable;
 
-    public abstract Car pickingUpCar(Ticket ticket, ParkingLot parkingLot) throws Exception;
+    public abstract Car pickingUpCar(Ticket ticket, ParkingLot parkingLot) throws Throwable;
 
 }

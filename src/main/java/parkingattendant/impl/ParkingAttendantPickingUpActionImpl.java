@@ -20,7 +20,7 @@ public class ParkingAttendantPickingUpActionImpl implements ParkingAttendantPick
 
 
     @Override
-    public Car pickUpCar(Ticket ticket, ParkingLot parkingLot) throws Exception {
+    public Car pickUpCar(Ticket ticket, ParkingLot parkingLot) throws Throwable {
         return parkingLotFacade.pickUp(ticket, parkingLot);
     }
 }

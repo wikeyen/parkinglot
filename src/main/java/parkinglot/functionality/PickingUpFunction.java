@@ -1,12 +1,12 @@
 package parkinglot.functionality;
 
-import com.sun.tools.javac.util.Pair;
 import parkinglot.exception.CarPickingUpWithoutTicketException;
 import parkinglot.exception.InvalidTicketException;
 import parkinglot.exception.TicketAndParkingLotNotMatch;
 import parkinglot.model.Car;
 import parkinglot.model.ParkingLot;
 import parkinglot.model.Ticket;
+import parkinglot.util.Either;
 
 import java.util.function.BiFunction;
 
@@ -18,22 +18,22 @@ import static parkinglot.model.Ticket.destroyTicket;
  */
 public class PickingUpFunction {
 
-    public BiFunction<Ticket, ParkingLot, Pair> pickUpCar() {
+    public BiFunction<Ticket, ParkingLot, Either> pickUpCar() {
         return ((ticket, parkingLot) -> {
             if (ticket == null) {
-                return Pair.of(new CarPickingUpWithoutTicketException("You must have a ticket to pick up car"), null);
+                return Either.Left(new CarPickingUpWithoutTicketException("You must have a ticket to pick up car"));
             }
             if (!parkingLot.equals(ticket.getParkingLot())) {
-                return Pair.of(new TicketAndParkingLotNotMatch("You ticket and the parking lot does not match"), null);
+                return Either.Left(new TicketAndParkingLotNotMatch("You ticket and the parking lot does not match"));
             }
             if (!ticket.isValid() || !parkingLot.getPool().containsKey(ticket)) {
-                return Pair.of(new InvalidTicketException("You ticket is invalid"), null);
+                return Either.Left(new InvalidTicketException("You ticket is invalid"));
             }
 
             Car car = parkingLot.getPool().remove(ticket);
             parkingLot.getOccupiedAmount().decrementAndGet();
             destroyTicket(ticket);
-            return Pair.of(null, car);
+            return Either.Right(car);
         });
     }
 

@@ -11,5 +11,5 @@ import java.util.List;
  * created on 2019-06-17
  */
 public interface ParkingAttendantParkingAction {
-    Ticket park(Car car, List<ParkingLot> parkingLots) throws Exception;
+    Ticket park(Car car, List<ParkingLot> parkingLots) throws Throwable;
 }
