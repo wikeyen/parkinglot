@@ -1,7 +1,9 @@
-package parkinglot.functional;
+package parkinglot.functionality;
 
 import com.sun.tools.javac.util.Pair;
-import parkinglot.exception.*;
+import parkinglot.exception.CarPickingUpWithoutTicketException;
+import parkinglot.exception.InvalidTicketException;
+import parkinglot.exception.TicketAndParkingLotNotMatch;
 import parkinglot.model.Car;
 import parkinglot.model.ParkingLot;
 import parkinglot.model.Ticket;
@@ -9,29 +11,12 @@ import parkinglot.model.Ticket;
 import java.util.function.BiFunction;
 
 import static parkinglot.model.Ticket.destroyTicket;
-import static parkinglot.model.Ticket.getNewTicket;
 
 /**
  * @author yancy3@lenovo.com
  * created on 2019-06-18
  */
-public class ParkingLotFunctionality {
-
-    public BiFunction<Car, ParkingLot, Pair> parkCar() {
-        return ((car, parkingLot) -> {
-            if (car == null) {
-                return Pair.of(new NoCarToParkException("You must have a car before parking"), null);
-            }
-            if (parkingLot.isFull()) {
-                return Pair.of(new FullyOccupiedParkingLotException("The Parking lot is full"), null);
-            }
-
-            Ticket ticket = getNewTicket(parkingLot);
-            parkingLot.getPool().put(ticket, car);
-            parkingLot.getOccupiedAmount().incrementAndGet();
-            return Pair.of(null, ticket);
-        });
-    }
+public class PickingUpFunction {
 
     public BiFunction<Ticket, ParkingLot, Pair> pickUpCar() {
         return ((ticket, parkingLot) -> {
@@ -51,4 +36,5 @@ public class ParkingLotFunctionality {
             return Pair.of(null, car);
         });
     }
+
 }

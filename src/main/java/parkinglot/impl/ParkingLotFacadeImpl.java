@@ -2,7 +2,8 @@ package parkinglot.impl;
 
 import com.sun.tools.javac.util.Pair;
 import parkinglot.ParkingLotFacade;
-import parkinglot.functional.ParkingLotFunctionality;
+import parkinglot.functionality.ParkingFunction;
+import parkinglot.functionality.PickingUpFunction;
 import parkinglot.model.Car;
 import parkinglot.model.ParkingLot;
 import parkinglot.model.Ticket;
@@ -15,15 +16,17 @@ import java.util.function.BiFunction;
  * created on 2019-06-18
  */
 public class ParkingLotFacadeImpl implements ParkingLotFacade {
-    private ParkingLotFunctionality functionality;
+    private ParkingFunction parkingFunction;
+    private PickingUpFunction pickingUpFunction;
 
     public ParkingLotFacadeImpl() {
-        this.functionality = new ParkingLotFunctionality();
+        this.parkingFunction = new ParkingFunction();
+        this.pickingUpFunction = new PickingUpFunction();
     }
 
     @Override
-    public Ticket park(Car car, ParkingLot parkingLot, BiFunction<Car, ParkingLot, Pair> functionality) throws Exception {
-        Pair parkingResult = functionality.apply(car, parkingLot);
+    public Ticket park(Car car, ParkingLot parkingLot, BiFunction<Car, ParkingLot, Pair> parkingFunctionality) throws Exception {
+        Pair parkingResult = parkingFunctionality.apply(car, parkingLot);
         if (parkingResult.snd != null) {
             return (Ticket) parkingResult.snd;
         }
@@ -33,7 +36,7 @@ public class ParkingLotFacadeImpl implements ParkingLotFacade {
 
     @Override
     public Ticket park(Car car, ParkingLot parkingLot) throws Exception {
-        Pair parkingResult = functionality.parkCar().apply(car, parkingLot);
+        Pair parkingResult = parkingFunction.parkCar().apply(car, parkingLot);
         if (parkingResult.snd != null) {
             return (Ticket) parkingResult.snd;
         }
@@ -42,8 +45,8 @@ public class ParkingLotFacadeImpl implements ParkingLotFacade {
     }
 
     @Override
-    public Car pickUp(Ticket ticket, ParkingLot parkingLot, BiFunction<Ticket, ParkingLot, Pair> functionality) throws Exception {
-        Pair pickingUpResult = functionality.apply(ticket, parkingLot);
+    public Car pickUp(Ticket ticket, ParkingLot parkingLot, BiFunction<Ticket, ParkingLot, Pair> pickingUpFunctionality) throws Exception {
+        Pair pickingUpResult = pickingUpFunctionality.apply(ticket, parkingLot);
         if (pickingUpResult.snd != null) {
             return (Car) pickingUpResult.snd;
         }
@@ -53,7 +56,7 @@ public class ParkingLotFacadeImpl implements ParkingLotFacade {
 
     @Override
     public Car pickUp(Ticket ticket, ParkingLot parkingLot) throws Exception {
-        Pair pickingUpResult = functionality.pickUpCar().apply(ticket, parkingLot);
+        Pair pickingUpResult = pickingUpFunction.pickUpCar().apply(ticket, parkingLot);
         if (pickingUpResult.snd != null) {
             return (Car) pickingUpResult.snd;
         }
