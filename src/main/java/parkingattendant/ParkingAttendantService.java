@@ -8,6 +8,8 @@ import parkinglot.model.Ticket;
  * @author yancy3@lenovo.com
  * created on 2019-06-17
  */
-public interface ParkingAttendantPickingUpAction {
-    Car pickUpCar(Ticket ticket, ParkingLot parkingLot) throws Throwable;
+public interface ParkingAttendantService {
+    Ticket park(Car car, ParkingLot parkingLot) throws Throwable;
+
+    Car pickUpCar(Ticket ticket) throws Throwable;
 }

@@ -48,7 +48,7 @@ class ParkingLotFacadeImplTest {
         ParkingLotFacade parkingLotFacade = new ParkingLotFacadeImpl();
         Ticket ticket = parkingLotFacade.park(carToPark, parkingLot);
 
-        Car carPickedUp = parkingLotFacade.pickUp(ticket, parkingLot);
+        Car carPickedUp = parkingLotFacade.pickUp(ticket);
 
         assertEquals(carToPark, carPickedUp);
         assertEquals(0, parkingLot.getOccupiedAmount().get());
@@ -62,7 +62,7 @@ class ParkingLotFacadeImplTest {
         parkingLotFacade.park(carToPark, parkingLot);
         Ticket ticket = Ticket.getNewTicket(parkingLot);
 
-        assertThrows(InvalidTicketException.class, () -> parkingLotFacade.pickUp(ticket, parkingLot));
+        assertThrows(InvalidTicketException.class, () -> parkingLotFacade.pickUp(ticket));
 
         assertEquals(1, parkingLot.getOccupiedAmount().get());
     }
@@ -75,7 +75,7 @@ class ParkingLotFacadeImplTest {
         Ticket ticket = parkingLotFacade.park(carToPark, parkingLot);
         Ticket.destroyTicket(ticket);
 
-        assertThrows(InvalidTicketException.class, () -> parkingLotFacade.pickUp(ticket, parkingLot));
+        assertThrows(InvalidTicketException.class, () -> parkingLotFacade.pickUp(ticket));
 
         assertEquals(1, parkingLot.getOccupiedAmount().get());
     }
@@ -87,7 +87,7 @@ class ParkingLotFacadeImplTest {
         ParkingLotFacade parkingLotFacade = new ParkingLotFacadeImpl();
         parkingLotFacade.park(carToPark, parkingLot);
 
-        assertThrows(CarPickingUpWithoutTicketException.class, () -> parkingLotFacade.pickUp(null, parkingLot));
+        assertThrows(CarPickingUpWithoutTicketException.class, () -> parkingLotFacade.pickUp(null));
 
         assertEquals(1, parkingLot.getOccupiedAmount().get());
 
