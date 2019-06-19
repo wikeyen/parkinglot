@@ -1,4 +1,4 @@
-package parkinglot.functionality;
+package parkinglot.service;
 
 import parkinglot.exception.CarPickingUpWithoutTicketException;
 import parkinglot.exception.InvalidTicketException;
@@ -16,10 +16,8 @@ import static parkinglot.model.Ticket.destroyTicket;
  * @author yancy3@lenovo.com
  * created on 2019-06-18
  */
-public class PickingUpFunction {
-
-    public BiFunction<Ticket, ParkingLot, Either> pickUpCar() {
-        return ((ticket, parkingLot) -> {
+public class PickingUpService {
+    private BiFunction<Ticket, ParkingLot, Either> defaultPickingUpCar = ((ticket, parkingLot) -> {
             if (ticket == null) {
                 return Either.Left(new CarPickingUpWithoutTicketException("You must have a ticket to pick up car"));
             }
@@ -35,6 +33,9 @@ public class PickingUpFunction {
             destroyTicket(ticket);
             return Either.Right(car);
         });
+
+    public Either pickUpCar(Ticket ticket, ParkingLot parkingLot) {
+        return defaultPickingUpCar.apply(ticket, parkingLot);
     }
 
 }

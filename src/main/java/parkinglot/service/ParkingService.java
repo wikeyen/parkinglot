@@ -1,4 +1,4 @@
-package parkinglot.functionality;
+package parkinglot.service;
 
 import parkinglot.exception.FullyOccupiedParkingLotException;
 import parkinglot.exception.NoCarToParkException;
@@ -15,10 +15,8 @@ import static parkinglot.model.Ticket.getNewTicket;
  * @author yancy3@lenovo.com
  * created on 2019-06-18
  */
-public class ParkingFunction {
-
-    public BiFunction<Car, ParkingLot, Either> parkCar() {
-        return ((car, parkingLot) -> {
+public class ParkingService {
+    private BiFunction<Car, ParkingLot, Either> defaultParking = ((car, parkingLot) -> {
             if (car == null) {
                 return Either.Left(new NoCarToParkException("You must have a car before parking"));
             }
@@ -31,6 +29,9 @@ public class ParkingFunction {
             parkingLot.getOccupiedAmount().incrementAndGet();
             return Either.Right(ticket);
         });
+
+    public Either parkCar(Car car, ParkingLot parkingLot) {
+        return defaultParking.apply(car, parkingLot);
     }
 
 }

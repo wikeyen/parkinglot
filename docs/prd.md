@@ -32,22 +32,22 @@ With one car and one parking-lot, how do you park your car?
 
 ###2019/06/17
 ####Description
-A newbie car parking attendant, multiple parking-lots. When a parking-lot is full, then should go to the next one to park (the parking lots are in a sequence) 
+A graduate car parking attendant, multiple parking-lots. When a parking-lot is full, then should go to the next one to park (the parking lots are in a sequence) 
 
 ####Tasking
->given one car, two not fully occupied parking-lot<br>
+>given a graduate parking attendant, one parking boy, one car, two not fully occupied parking-lot<br>
 >when parking<br>
->then parking into the first parking-lot, and get a ticket from it<br>
+>then succeed parking into the first parking-lot, and get a ticket from it<br>
 >
->given one car, two parking-lots with the first one fully occupied and the second one with some vacancies<br>
+>given a graduate parking attendant, one car, two parking-lots with the first one fully occupied and the second one with some vacancies<br>
 >when parking<br>
 >then parking into the second parking-lot, and get a ticket from it<br>
 >
->given one car, two fully occupied parking-lot<br>
+>given a graduate parking attendant, one car, two fully occupied parking-lot<br>
 >when parking<br>
 >then parking failed<br>
 >
->given one car, no parking-lot<br>
+>given a graduate parking attendant, one car, no parking-lot<br>
 >when parking<br>
 >then parking failed<br>
 >
@@ -55,14 +55,27 @@ A newbie car parking attendant, multiple parking-lots. When a parking-lot is ful
 >when parking<br>
 >then parking failed<br>
 >
->given a certain parking-lot with a parked car, and a valid ticket relate to it<br>
+>given a graduate parking attendant, a certain parking-lot with a parked car, and a valid ticket relate to it<br>
 >when picking up the car from the correct parking-lot<br>
 >then picking up car success, the ticket should turn to invalid<br>
 >
->given a certain parking-lot with a parked car, and a valid ticket relate to it<br>
+>given a graduate parking attendant, a certain parking-lot with a parked car, and a valid ticket relate to it<br>
 >when picking up the car from a wrong parking-lot<br>
 >then picking up car failed, the ticket should still be valid<br>
 >
 >given an invalid ticket<br>
 >when picking up a car<br>
 >then picking up failed<br>
+
+###2019/06/19
+####Description
+A smart car parking attendant, multiple parking-lots. He/she should park the car into the parking-lot with most vacancies.
+
+####Tasking
+>given a smart parking attendant, two not full parking-lots with the first one more occupied,
+>when parking
+>then succeed parking into the second parking-lot, and get a ticket form it<br>
+>
+>given a smart parking attendant, two not full parking-lots with both evenly occupied,
+>when parking
+>then succeed parking into the first parking-lot, and get a ticket form it<br>

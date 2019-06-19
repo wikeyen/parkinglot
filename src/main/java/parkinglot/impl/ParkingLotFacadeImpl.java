@@ -1,11 +1,11 @@
 package parkinglot.impl;
 
 import parkinglot.ParkingLotFacade;
-import parkinglot.functionality.ParkingFunction;
-import parkinglot.functionality.PickingUpFunction;
 import parkinglot.model.Car;
 import parkinglot.model.ParkingLot;
 import parkinglot.model.Ticket;
+import parkinglot.service.ParkingService;
+import parkinglot.service.PickingUpService;
 import parkinglot.util.Either;
 
 import java.util.function.BiFunction;
@@ -16,12 +16,12 @@ import java.util.function.BiFunction;
  * created on 2019-06-18
  */
 public class ParkingLotFacadeImpl implements ParkingLotFacade {
-    private ParkingFunction parkingFunction;
-    private PickingUpFunction pickingUpFunction;
+    private ParkingService parkingService;
+    private PickingUpService pickingUpService;
 
     public ParkingLotFacadeImpl() {
-        this.parkingFunction = new ParkingFunction();
-        this.pickingUpFunction = new PickingUpFunction();
+        this.parkingService = new ParkingService();
+        this.pickingUpService = new PickingUpService();
     }
 
     @Override
@@ -32,7 +32,7 @@ public class ParkingLotFacadeImpl implements ParkingLotFacade {
 
     @Override
     public Ticket park(Car car, ParkingLot parkingLot) throws Throwable {
-        Either parkingResult = parkingFunction.parkCar().apply(car, parkingLot);
+        Either parkingResult = parkingService.parkCar(car, parkingLot);
         return (Ticket) parkingResult.getRight().orElseThrow(parkingResult::getLeft);
     }
 
@@ -44,7 +44,7 @@ public class ParkingLotFacadeImpl implements ParkingLotFacade {
 
     @Override
     public Car pickUp(Ticket ticket, ParkingLot parkingLot) throws Throwable {
-        Either pickingUpResult = pickingUpFunction.pickUpCar().apply(ticket, parkingLot);
+        Either pickingUpResult = pickingUpService.pickUpCar(ticket, parkingLot);
         return (Car) pickingUpResult.getRight().orElseThrow(pickingUpResult::getLeft);
     }
 }
