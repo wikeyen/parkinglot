@@ -69,7 +69,7 @@ class ParkingAttendantServiceImplTest {
     }
 
     @Test
-    void should_fail_when_parking_without_car() {
+    void should_fail_when_parking_without_car_given_a_graduate_parking_attendant() {
         List<ParkingLot> parkingLots = getEmptyParkingLots(2, 2, 2);
         ParkingAttendant graduateParkingAttendant = new ParkingAttendantGraduate(parkingLots);
 

@@ -5,7 +5,7 @@ import parkingattendant.impl.ParkingAttendantServiceImpl;
 import parkinglot.exception.FullyOccupiedParkingLotException;
 import parkinglot.exception.NoCarToParkException;
 import parkinglot.exception.NoParkingLotException;
-import parkinglot.exception.NoTicketException;
+import parkinglot.exception.NoTicketForCarPickingUpException;
 import parkinglot.model.Car;
 import parkinglot.model.ParkingLot;
 import parkinglot.model.Ticket;
@@ -35,9 +35,9 @@ public abstract class ParkingAttendant {
         }
     }
 
-    protected void checkTicket(Ticket ticket) throws NoTicketException {
+    protected void checkTicket(Ticket ticket) throws NoTicketForCarPickingUpException {
         if (ticket == null) {
-            throw new NoTicketException("You must have a ticket");
+            throw new NoTicketForCarPickingUpException("You must have a ticket");
         }
     }
 

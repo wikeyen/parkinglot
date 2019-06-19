@@ -1,7 +1,7 @@
 package parkinglot.service;
 
-import parkinglot.exception.CarPickingUpWithoutTicketException;
 import parkinglot.exception.InvalidTicketException;
+import parkinglot.exception.NoTicketForCarPickingUpException;
 import parkinglot.model.Car;
 import parkinglot.model.ParkingLot;
 import parkinglot.model.Ticket;
@@ -18,7 +18,7 @@ import static parkinglot.model.Ticket.destroyTicket;
 public class PickingUpService {
     private Function<Ticket, Either> defaultPickingUpCar = ((ticket) -> {
         if (ticket == null) {
-            return Either.Left(new CarPickingUpWithoutTicketException("You must have a ticket to pick up car"));
+            return Either.Left(new NoTicketForCarPickingUpException("You must have a ticket to pick up car"));
         }
         if (!ticket.isValid() || !ticket.getParkingLot().getPool().containsKey(ticket)) {
             return Either.Left(new InvalidTicketException("You ticket is invalid"));

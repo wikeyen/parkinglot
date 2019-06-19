@@ -2,9 +2,9 @@ package parkinglot.impl;
 
 import org.junit.jupiter.api.Test;
 import parkinglot.ParkingLotFacade;
-import parkinglot.exception.CarPickingUpWithoutTicketException;
 import parkinglot.exception.FullyOccupiedParkingLotException;
 import parkinglot.exception.InvalidTicketException;
+import parkinglot.exception.NoTicketForCarPickingUpException;
 import parkinglot.model.Car;
 import parkinglot.model.ParkingLot;
 import parkinglot.model.Ticket;
@@ -87,7 +87,7 @@ class ParkingLotFacadeImplTest {
         ParkingLotFacade parkingLotFacade = new ParkingLotFacadeImpl();
         parkingLotFacade.park(carToPark, parkingLot);
 
-        assertThrows(CarPickingUpWithoutTicketException.class, () -> parkingLotFacade.pickUp(null));
+        assertThrows(NoTicketForCarPickingUpException.class, () -> parkingLotFacade.pickUp(null));
 
         assertEquals(1, parkingLot.getOccupiedAmount().get());
 
