@@ -59,9 +59,9 @@ A graduate car parking attendant, multiple parking-lots. When a parking-lot is f
 >when picking up the car from the correct parking-lot<br>
 >then picking up car success, the ticket should turn to invalid<br>
 >
->given a graduate parking attendant, a certain parking-lot with a parked car, and a valid ticket relate to it<br>
->when picking up the car from a wrong parking-lot<br>
->then picking up car failed, the ticket should still be valid<br>
+>given a graduate parking attendant, a certain parking-lot with a parked car, and an invalid ticket relate to it<br>
+>when picking up the car from the correct parking-lot<br>
+>then picking up car failed<br>
 >
 >given an invalid ticket<br>
 >when picking up a car<br>
@@ -70,6 +70,7 @@ A graduate car parking attendant, multiple parking-lots. When a parking-lot is f
 ###2019/06/19
 ####Description
 A smart car parking attendant, multiple parking-lots. He/she should park the car into the parking-lot with most vacancies.
+if there were two or more with the same amount of vacancies, then park into the first parking-lot
 
 ####Tasking
 >given a smart parking attendant, two not full parking-lots with the first one more occupied,
@@ -79,3 +80,33 @@ A smart car parking attendant, multiple parking-lots. He/she should park the car
 >given a smart parking attendant, two not full parking-lots with both evenly occupied,
 >when parking
 >then succeed parking into the first parking-lot, and get a ticket form it<br>
+>
+>given a smart parking attendant, a certain parking-lot with a parked car, and a valid ticket relate to it<br>
+>when picking up the car from the correct parking-lot<br>
+>then picking up car success, the ticket should turn to invalid<br>
+>
+>given a smart parking attendant, a certain parking-lot with a parked car, and an invalid ticket relate to it<br>
+>when picking up the car from the correct parking-lot<br>
+>then picking up car failed<br>
+
+###2019/06/20
+####Description
+A super car parking attendant, multiple parking-lots, He/she should park the car into the parking-lot with the lowest occupation rate.
+if there were two or more at the same lowest occupation rate, then park into the first parking-lot
+
+####Tasking
+>given a super parking attendant, two not full parking-lots with the first one having a higher occupation rate,
+>when parking
+>then succeed parking into the second parking-lot, and get a ticket form it<br>
+>
+>given a super parking attendant, two not full parking-lots with both evenly occupied,
+>when parking
+>then succeed parking into the first parking-lot, and get a ticket form it<br>
+>
+>given a super parking attendant, a certain parking-lot with a parked car, and a valid ticket relate to it<br>
+>when picking up the car from the correct parking-lot<br>
+>then picking up car success, the ticket should turn to invalid<br>
+>
+>given a super parking attendant, a certain parking-lot with a parked car, and an invalid ticket relate to it<br>
+>when picking up the car from the correct parking-lot<br>
+>then picking up car failed<br>
