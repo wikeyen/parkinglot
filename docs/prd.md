@@ -35,7 +35,7 @@ With one car and one parking-lot, how do you park your car?
 A graduate car parking attendant, multiple parking-lots. When a parking-lot is full, then should go to the next one to park (the parking lots are in a sequence) 
 
 ####Tasking
->given a graduate parking attendant, one parking boy, one car, two not fully occupied parking-lot<br>
+>given a graduate parking attendant, one parking boy, one car, two not fully occupied parking-lots<br>
 >when parking<br>
 >then succeed parking into the first parking-lot, and get a ticket from it<br>
 >
@@ -43,7 +43,7 @@ A graduate car parking attendant, multiple parking-lots. When a parking-lot is f
 >when parking<br>
 >then parking into the second parking-lot, and get a ticket from it<br>
 >
->given a graduate parking attendant, one car, two fully occupied parking-lot<br>
+>given a graduate parking attendant, one car, two fully occupied parking-lots<br>
 >when parking<br>
 >then parking failed<br>
 >

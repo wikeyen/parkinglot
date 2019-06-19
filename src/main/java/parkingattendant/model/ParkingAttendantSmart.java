@@ -10,12 +10,12 @@ import java.util.List;
 
 /**
  * @author yancy3@lenovo.com
- * created on 2019-06-17
+ * created on 2019-06-19
  */
-public class ParkingAttendantJunior extends ParkingAttendant {
-    public ParkingAttendantJunior(List<ParkingLot> parkingLots) {
+public class ParkingAttendantSmart extends ParkingAttendant {
+    public ParkingAttendantSmart(List<ParkingLot> parkingLots) {
         super(parkingLots);
-        this.qualificationLevel = ParkingQualificationLevel.JUNIOR;
+        this.qualificationLevel = ParkingQualificationLevel.SMART;
         this.parkingAction = new ParkingAttendantParkingActionImpl();
         this.pickingUpAction = new ParkingAttendantPickingUpActionImpl();
     }
@@ -28,7 +28,6 @@ public class ParkingAttendantJunior extends ParkingAttendant {
 
     @Override
     public Car pickingUpCar(Ticket ticket, ParkingLot parkingLot) throws Throwable {
-        assertTicket(ticket);
-        return pickingUpAction.pickUpCar(ticket, parkingLot);
+        return null;
     }
 }

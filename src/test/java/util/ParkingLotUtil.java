@@ -35,4 +35,17 @@ public class ParkingLotUtil {
         parkingLots.stream().limit(capacity.length / 2).forEach(parkingLot -> parkingLot.getOccupiedAmount().set(parkingLot.getCapacity()));
         return parkingLots;
     }
+
+    public static List<ParkingLot> getTwoParkingLotsWithTheFirstOneHavingOneVacanciesAndSecondHavingFiveVacancies() {
+        ParkingLot firstParkingLot = ParkingLot.getEmptyParkingLot(10);
+        firstParkingLot.getOccupiedAmount().set(9);
+        ParkingLot secondParkingLot = ParkingLot.getEmptyParkingLot(10);
+        secondParkingLot.getOccupiedAmount().set(5);
+
+        return Arrays.asList(firstParkingLot, secondParkingLot);
+    }
+
+    public static List<ParkingLot> getTwoParkingLotsWithBothEvenlyVacancies() {
+        return getEmptyParkingLots(2);
+    }
 }

@@ -8,6 +8,7 @@ import parkinglot.model.Car;
 import parkinglot.model.ParkingLot;
 import parkinglot.model.Ticket;
 
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -24,8 +25,8 @@ public class ParkingAttendantParkingActionImpl implements ParkingAttendantParkin
     @Override
     public Ticket park(Car car, List<ParkingLot> parkingLots) throws Throwable {
         ParkingLot parkingLot = parkingLots.stream()
-                                           .filter(parkinglot -> !parkinglot.isFull())
-                                           .findFirst()
+                                           .filter(p -> !p.isFull())
+                                           .min(Comparator.comparingInt(a -> a.getOccupiedAmount().get()))
                                            .orElseThrow(() -> new FullyOccupiedParkingLotException("All parking-lots are full"));
 
         return parkingLotFacade.park(car, parkingLot);
