@@ -8,19 +8,19 @@ import java.util.List;
 
 /**
  * @author yancy3@lenovo.com
- * created on 2019-06-19
+ * created on 2019-06-20
  */
-public class ParkingAttendantSmart extends ParkingAttendant {
-    public ParkingAttendantSmart(List<ParkingLot> parkingLots) {
+public class ParkingAttendantSuper extends ParkingAttendant {
+    public ParkingAttendantSuper(List<ParkingLot> parkingLots) {
         super(parkingLots);
-        this.qualificationLevel = ParkingQualificationLevel.SMART;
+        this.qualificationLevel = ParkingQualificationLevel.GRADUATE;
     }
 
     @Override
     protected ParkingLot findParkingLot() throws FullyOccupiedParkingLotException {
         return parkingLots.stream()
                           .filter(p -> !p.isFull())
-                          .min(Comparator.comparingInt(a -> a.getOccupiedAmount().get()))
-                          .orElseThrow(() -> new FullyOccupiedParkingLotException("All parking-lots are full"));
+                          .min(Comparator.comparing(ParkingLot::getLoad))
+                          .orElseThrow(() -> new FullyOccupiedParkingLotException("The parking lots are full"));
     }
 }

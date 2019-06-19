@@ -5,5 +5,5 @@ package parkingattendant.model;
  * created on 2019-06-17
  */
 public enum ParkingQualificationLevel {
-    JUNIOR, SMART
+    GRADUATE, SMART, SUPER
 }

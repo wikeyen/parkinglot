@@ -43,8 +43,8 @@ public class ParkingLotFacadeImpl implements ParkingLotFacade {
     }
 
     @Override
-    public Car pickUp(Ticket ticket, ParkingLot parkingLot) throws Throwable {
-        Either pickingUpResult = pickingUpService.pickUpCar(ticket, parkingLot);
+    public Car pickUp(Ticket ticket) throws Throwable {
+        Either pickingUpResult = pickingUpService.pickUpCar(ticket);
         return (Car) pickingUpResult.getRight().orElseThrow(pickingUpResult::getLeft);
     }
 }

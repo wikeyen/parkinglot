@@ -19,5 +19,5 @@ public interface ParkingLotFacade {
 
     Car pickUp(Ticket ticket, ParkingLot parkingLot, BiFunction<Ticket, ParkingLot, Either> biFunction) throws Throwable;
 
-    Car pickUp(Ticket ticket, ParkingLot parkingLot) throws Throwable;
+    Car pickUp(Ticket ticket) throws Throwable;
 }

@@ -40,6 +40,10 @@ public class ParkingLot {
         return occupiedAmount;
     }
 
+    public Double getLoad() {
+        return (double) occupiedAmount.get() / (double) capacity;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
