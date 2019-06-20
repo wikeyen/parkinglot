@@ -45,7 +45,16 @@ public class ParkingLotUtil {
         return Arrays.asList(firstParkingLot, secondParkingLot);
     }
 
-    public static List<ParkingLot> getTwoParkingLotsWithBothEvenlyVacancies() {
+    public static List<ParkingLot> getTwoParkingLotsWithTheSecondHavingAHigherVacancyRate() {
+        ParkingLot firstParkingLot = ParkingLot.getEmptyParkingLot(10);
+        firstParkingLot.getOccupiedAmount().set(9);
+        ParkingLot secondParkingLot = ParkingLot.getEmptyParkingLot(10);
+        secondParkingLot.getOccupiedAmount().set(5);
+
+        return Arrays.asList(firstParkingLot, secondParkingLot);
+    }
+
+    public static List<ParkingLot> getTwoPartiallyOccupiedParkingLotsWithEvenVacancies() {
         return getEmptyParkingLots(2);
     }
 }
