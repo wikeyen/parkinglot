@@ -13,7 +13,7 @@ import java.util.List;
 public class ParkingAttendantSuper extends ParkingAttendant {
     public ParkingAttendantSuper(List<ParkingLot> parkingLots) {
         super(parkingLots);
-        this.qualificationLevel = ParkingQualificationLevel.GRADUATE;
+        this.qualificationLevel = ParkingQualificationLevel.SUPER;
     }
 
     @Override

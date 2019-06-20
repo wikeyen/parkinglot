@@ -21,6 +21,10 @@ public abstract class ParkingAttendant {
     protected List<ParkingLot> parkingLots;
     protected ParkingAttendantService parkingService;
 
+    public ParkingAttendant() {
+        this.parkingService = new ParkingAttendantServiceImpl();
+    }
+
     protected ParkingAttendant(List<ParkingLot> parkingLots) {
         this.parkingLots = parkingLots;
         this.parkingService = new ParkingAttendantServiceImpl();
